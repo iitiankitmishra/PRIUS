@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strip Footing</title>
+    <link href="Style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="class item-1 navbar">
+            <div class="navbutton home"><a href="https://www.google.com/" target="_blank">Home</a></div>
+            <div class="navbutton about"><a href="https://www.google.com/" target="_blank">About</a></div>
+            <div class="navbutton menu"><a href="https://www.google.com/">Menu</a></div>
+            <div class="navbutton contact"><a href="https://www.google.com/" target="_blank">Contact</a></div>
+            <div class="webpage-name"><strong>PRIUS: Shallow Foundation (Strip Footing)</strong></div>
+            <div class="navbutton login"><a href="Index2.html" target="_blank">Login</a></div>
+        </div>
+        <div class="class item-2 aside">
+            <h4 class="aside-heading">IS Codes Used</h4>
+            <div class="iscode iscode-1"><a href="https://law.resource.org/pub/in/bis/S03/is.1786.2008.pdf"
+                    target="_blank">HIGH Strength Steel Bar</a></div>
+            <div class="iscode iscode-2"><a href="https://law.resource.org/pub/in/bis/S03/is.432.1.1982.pdf"
+                    target="_blank">Mild Steel</a></div>
+            <div class="iscode iscode-3"><a href="https://law.resource.org/pub/in/bis/S03/is.432.1.1982.pdf"
+                    target="_blank">Mild Steel</a></div>
+            <div class="iscode iscode-4"><a href="https://law.resource.org/pub/in/bis/S03/is.456.2000.pdf"
+                    target="_blank">Concrete Mix Design</a></div>
+            <h6><a href="Index2.html" target="_blank">Click here for more Codes</a></h6>
+        </div>
+        <div class="class item-3 main">
+            <div class="form-container">
+                <!-- <h2 class="form-heading">Load & Soil Parameters</h2> -->
+                <form id="paramForm" class="input-form">
+
+                    <div class="form-grid">
+                        <!-- Load Parameters -->
+                        <div class="form-column">
+                            <h5>Project Details</h5>
+                            <div class="form-group">
+                                <label for="projectName">Project Name:</label>
+                                <input type="text" id="projectName" name="projectName" placeholder="Project Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location:</label>
+                                <input type="text" id="location" name="location" placeholder="Location">
+                            </div>
+                            <div class="form-group">
+                                <label for="engineer">Engineer:</label>
+                                <input type="text" id="engineer" name="engineer" placeholder="Engineer Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date:</label>
+                                <input type="date" id="date" name="date" placeholder="Date" value="">
+                            </div>
+
+                        </div>
+
+                        <!-- Soil parameters -->
+                        <div class="form-column">
+                            <h5>Load Parameters: </h5>
+                            <div class="form-group">
+                                <label for="dead-load">Dead Load (kN/m²):</label>
+                                <input type="text" id="dead-load" name="dead-load" placeholder="Enter dead load">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="live-load">Live Load (kN/m²):</label>
+                                <input type="text" id="live-load" name="live-load" placeholder="Enter live load">
+                            </div>
+                            <h5>Foundation Parameters:</h5>
+                            <div class="form-group">
+                                <label for="bearing-capacity">Bearing Capacity (kN/m²):</label>
+                                <input type="text" id="bearing-capacity" name="bearing-capacity"
+                                    placeholder="Enter bearing capacity">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="wall-thickness">Wall Thickness (m):</label>
+                                <input type="text" id="wall-thickness" name="wall-thickness"
+                                    placeholder="Enter wall thickness">
+                            </div>
+                        </div>
+                        <div class="form-column">
+                            <h5>Select Grades</h5>
+                            <div class="form-group">
+                                <label for="grade-of-steel">Grade of Steel (MPa):</label>
+                                <select name="grade-of-steel" id="grade-of-steel">
+                                    <option value="250">Fe 250</option>
+                                    <option value="415">Fe 415</option>
+                                    <option value="500">Fe 500</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="grade-of-cement">Grade of Cement (MPa):</label>
+                                <select name="grade-of-cement" id="grade-of-cement">
+                                    <option value="15">15MPa</option>
+                                    <option value="20">20MPa</option>
+                                    <option value="25">25MPa</option>
+                                    <option value="30">30MPa</option>
+                                    <option value="35">35MPa</option>
+                                    <option value="40">40MPa</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="diameter-of-steel-bar">Diameter of Bars (mm):</label>
+                                <input type="text" id="diameter-of-steel-bar" name="diameter-of-steel-bar"
+                                    placeholder="Enter diameter of steel bar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Buttons -->
+                    <!-- Footer Buttons -->
+                    <div class="form-buttons">
+                        <button type="button" onclick="calculate()">Submit</button>
+                        <button type="button" onclick="clearForm()">Clear</button>
+                        <button type="button" onclick="generatePDF()">📄 Download PDF Report</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="class item-4 result">
+            <h2 class="result-heading">Results</h2>
+            <div class="results-content">
+                <div id="output" class="output-box"></div>
+            </div>
+        </div>
+        <div class="class item-5">
+            <div class="intro">
+                <strong>Developed by:</strong> Vikas, Sourav, Ankit <br>
+                <strong>Mentored by:</strong> Dr. Akshay Pratap Singh
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Content -->
+    <div id="reportContent">
+        <div class="report-header">
+            <h1>GEOTECHNICAL INVESTIGATION REPORT</h1>
+            <p id="reportProjectName">Project: Foundation Analysis</p>
+            <p id="reportLocation">Location: Patna, Bihar</p>
+            <p id="reportDate">Date: 27-12-2025</p>
+            <p id="reportEngineer">Prepared By: Your Name</p>
+        </div>
+
+        <div class="report-section">
+            <h2>1. EXECUTIVE SUMMARY</h2>
+            <p>This report presents geotechnical investigation and foundation design analysis based on Indian Standard
+                IS 1904:2016. The analysis includes soil property assessment and bearing capacity calculations.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>2. SITE INFORMATION</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Project Name:</label>
+                    <span id="summaryProjectName">-</span>
+                </div>
+                <div class="info-item">
+                    <label>Location:</label>
+                    <span id="summaryLocation">-</span>
+                </div>
+                <div class="info-item">
+                    <label>Foundation Type:</label>
+                    <span>Spread Foundation</span>
+                </div>
+                <div class="info-item">
+                    <label>Investigation Date:</label>
+                    <span id="investigationDate">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h2>3. SOIL PROPERTIES</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bearing Capacity</td>
+                        <td id="tablebearingcapacity">-</td>
+                        <td>kN/m³</td>
+                    </tr>
+                    <tr>
+                        <td>Wall Thickness</td>
+                        <td id="tablewallthickness">-</td>
+                        <td>°m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="report-section">
+            <h2>4. Grades</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Value</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Grade of Steel</td>
+                        <td id="tablegradeofsteel">-</td>
+                        <td>MPa</td>
+                    </tr>
+                    <tr>
+                        <td>Grade of Cement</td>
+                        <td id="tablegradeofcement">-</td>
+                        <td>MPa</td>
+                    </tr>
+                    <tr>
+                        <td>Diameter of Steel Bar</td>
+                        <td id="tablediameterofsteelbar">-</td>
+                        <td>mm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="report-section">
+            <h2>5. LOAD ANALYSIS</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Load Type</th>
+                        <th>Value (kN)</th>
+                        <th>%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dead Load</td>
+                        <td id="tableDeadLoad">-</td>
+                        <td id="deadLoadPercent">-</td>
+                    </tr>
+                    <tr>
+                        <td>Live Load</td>
+                        <td id="tableLiveLoad">-</td>
+                        <td id="liveLoadPercent">-</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Total Load</td>
+                        <td id="totalLoad">-</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="report-section">
+            <h2>6. Final Output</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Depth</td>
+                        <td id="tabledepth">-</td>
+                        <td>mm</td>
+                    </tr>
+                    <tr>
+                        <td>Spacing</td>
+                        <td id="tablespacing">-</td>
+                        <td>mm</td>
+                    </tr>
+                    <tr>
+                        <td>Total Area of Steel</td>
+                        <td id="tablearearequired">-</td>
+                        <td>mm2</td>
+                    </tr>
+                    <tr>
+                        <td>Total length</td>
+                        <td id="tabletotallength">-</td>
+                        <td>mm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="report-section">
+            <h2>7. RECOMMENDATIONS</h2>
+            <ul class="recommendation-list">
+                <li>Follow IS 1904:2016 for foundation design</li>
+                <li>Minimum depth as per analysis</li>
+                <li>Proper drainage required</li>
+                <li>Careful excavation of bearing strata</li>
+                <li>Concrete M25 minimum</li>
+                <li>Follow IS 456:2000 for RCC</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>IS 1904:2016 | Generated: <span id="generatedDate">27-12-2025</span></p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="Script.js"></script>
+</body>
+
+</html>
