@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIUS - Foundation Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="Style1.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        
+        <nav class="navbar">
+            <div class="nav-left">
+                <button class="toggle-btn" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="brand">
+                    <i class="fa-solid fa-layer-group brand-icon"></i>
+                    <span>PRIUS: Strip Footing</span>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+                <a href="Index2.html" class="btn-login">Login</a>
+            </div>
+        </nav>
+
+        <div class="main-layout">
+            
+            <aside class="sidebar" id="sidebar">
+
+                <div class="mobile-nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+
+                <div class="sidebar-content">
+                    <h5 class="section-title">IS CODES USED</h5>
+                    <ul class="code-list">
+                        <li>
+                            <a href="https://law.resource.org/pub/in/bis/S03/is.1786.2008.pdf" target="_blank">
+                                <i class="fa-solid fa-file-pdf"></i> IS 1786:2008
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://law.resource.org/pub/in/bis/S03/is.432.1.1982.pdf" target="_blank">
+                                <i class="fa-solid fa-file-pdf"></i> IS 432:1982
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://law.resource.org/pub/in/bis/S03/is.456.2000.pdf" target="_blank">
+                                <i class="fa-solid fa-file-pdf"></i> IS 456:2000
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="sidebar-footer">
+                        <h6><a href="Index2.html">View More Codes</a></h6>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content-area">
+                
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h3>Input Parameters</h3>
+                    </div>
+
+                    <div class="tab-header">
+                        <button class="tab-btn active" onclick="openTab(event, 'tab-project')">Project</button>
+                        <button class="tab-btn" onclick="openTab(event, 'tab-load')">Load & Foundation</button>
+                        <button class="tab-btn" onclick="openTab(event, 'tab-grade')">Grade & Detailing</button>
+                    </div>
+
+                    <form id="paramForm">
+                        
+                        <div id="tab-project" class="tab-content active">
+                            <div class="row">
+                                <div class="group">
+                                    <label>Project Name</label>
+                                    <input type="text" id="projectName" placeholder="Project Name">
+                                </div>
+                                <div class="group">
+                                    <label>Location</label>
+                                    <input type="text" id="location" placeholder="Location">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="group">
+                                    <label>Engineer</label>
+                                    <input type="text" id="engineer" placeholder="Engineer Name">
+                                </div>
+                                <div class="group">
+                                    <label>Date</label>
+                                    <input type="date" id="date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-load" class="tab-content">
+                            <div class="row">
+                                <div class="group">
+                                    <label>Dead Load (kN)</label>
+                                    <input type="number" step="any" min="0" id="dead-load" placeholder="e.g. 150" value="120">
+                                </div>
+                                <div class="group">
+                                    <label>Live Load (kN)</label>
+                                    <input type="number" step="any" min="0" id="live-load" placeholder="e.g. 100" value="80">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="group">
+                                    <label>Bearing Capacity (kN/m²)</label>
+                                    <input type="number" step="any" min="0" id="bearing-capacity" placeholder="e.g. 200" value="200">
+                                </div>
+                                <div class="group">
+                                    <label>Wall Thickness (m)</label>
+                                    <input type="number" step="any" min="0" id="wall-thickness" placeholder="e.g. 0.3" value="0.3">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="group">
+                                    <label>Depth of Foundation (mm)</label>
+                                    <input type="number" step="any" min="0" id="depth-of-foundation" placeholder="e.g. 500" value="500">
+                                </div>
+                                <div class="group">
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-grade" class="tab-content">
+                            <div class="row">
+                                <div class="group">
+                                    <label>Grade of Steel (MPa)</label>
+                                    <select id="grade-of-steel" class="form-select">
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="250">Fe 250</option>
+                                        <option value="415" selected>Fe 415</option>
+                                        <option value="500">Fe 500</option>
+                                    </select>
+                                </div>
+                                <div class="group">
+                                    <label>Grade of Cement (MPa)</label>
+                                    <select id="grade-of-cement" class="form-select">
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="15">M15</option>
+                                        <option value="20">M20</option>
+                                        <option value="25" selected>M25</option>
+                                        <option value="30">M30</option>
+                                        <option value="35">M35</option>
+                                        <option value="40">M40</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="group">
+                                    <label>Main Bar Diameter (mm)</label>
+                                    <input type="number" step="any" min="0" id="diameter-of-steel-bar" placeholder="e.g. 12" value="12">
+                                </div>
+                                <div class="group">
+                                    <label>Dist. Bar Diameter (mm)</label>
+                                    <select id="diameter-of-dist-bar" class="form-select">
+                                        <option value="8" selected>8 mm</option>
+                                        <option value="10">10 mm</option>
+                                        <option value="12">12 mm</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="group">
+                                    <label>Nominal Cover (mm)</label>
+                                    <input type="number" step="any" min="0" id="nominal-cover" placeholder="e.g. 50" value="50">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="clearForm()">Reset</button>
+                            <button type="button" class="btn-primary" onclick="calculate()">Calculate</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card output-card">
+                    <div class="card-header">
+                        <h3>Output</h3>
+                    </div>
+                    <div id="output" class="output-body">
+                        <div class="state-empty">
+                            <i class="fa-solid fa-calculator"></i>
+                            <p>No calculation yet</p>
+                            <small>Enter parameters above and click Calculate</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem; text-align: right;">
+                    <button type="button" class="btn-pdf" onclick="generatePDF()">
+                        <i class="fa-solid fa-file-pdf"></i> Download PDF Report
+                    </button>
+                </div>
+
+            </main>
+
+            <aside class="right-panel">
+                <div class="card viz-card">
+                    <div class="card-header">
+                        <h3>Graphic Visualization</h3>
+                    </div>
+                    <div class="visualization-content" style="height: auto; min-height: 400px; padding: 0;">
+                        <div id="viz-container" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: white;">
+                            <div class="placeholder-graphic">
+                                <i class="fa-solid fa-cube"></i>
+                                <p>Click "Calculate" to generate diagrams</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer class="app-footer">
+            <span>Developed by: Vikas, Sourav, Ankit</span>
+            <span>Mentored by: Dr. Akshay Pratap Singh</span>
+        </footer>
+
+        <div id="reportContent">
+            <div class="report-header">
+                <h1>GEOTECHNICAL INVESTIGATION REPORT</h1>
+                <p id="reportProjectName">Project: Foundation Analysis</p>
+                <p id="reportLocation">Location: Patna, Bihar</p>
+                <p id="reportDate">Date: 27-12-2025</p>
+                <p id="reportEngineer">Prepared By: Your Name</p>
+            </div>
+
+            <div class="report-section">
+                <h2>1. EXECUTIVE SUMMARY</h2>
+                <p>This report presents geotechnical investigation and foundation design analysis based on Indian Standard
+                    IS 1904:2016. The analysis includes soil property assessment and bearing capacity calculations.</p>
+            </div>
+
+            <div class="report-section">
+                <h2>2. SITE INFORMATION</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Project Name:</label>
+                        <span id="summaryProjectName">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Location:</label>
+                        <span id="summaryLocation">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Foundation Type:</label>
+                        <span>Spread Foundation</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Investigation Date:</label>
+                        <span id="investigationDate">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <h2>3. SOIL PROPERTIES</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bearing Capacity</td>
+                            <td id="tablebearingcapacity">-</td>
+                            <td>kN/m³</td>
+                        </tr>
+                        <tr>
+                            <td>Wall Thickness</td>
+                            <td id="tablewallthickness">-</td>
+                            <td>°m</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="report-section">
+                <h2>4. Grades</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Value</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Grade of Steel</td>
+                            <td id="tablegradeofsteel">-</td>
+                            <td>MPa</td>
+                        </tr>
+                        <tr>
+                            <td>Grade of Cement</td>
+                            <td id="tablegradeofcement">-</td>
+                            <td>MPa</td>
+                        </tr>
+                        <tr>
+                            <td>Diameter of Steel Bar</td>
+                            <td id="tablediameterofsteelbar">-</td>
+                            <td>mm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="report-section">
+                <h2>5. LOAD ANALYSIS</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Load Type</th>
+                            <th>Value (kN)</th>
+                            <th>%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dead Load</td>
+                            <td id="tableDeadLoad">-</td>
+                            <td id="deadLoadPercent">-</td>
+                        </tr>
+                        <tr>
+                            <td>Live Load</td>
+                            <td id="tableLiveLoad">-</td>
+                            <td id="liveLoadPercent">-</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>Total Load</td>
+                            <td id="totalLoad">-</td>
+                            <td>100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="report-section">
+                <h2>6. Final Output</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Depth</td>
+                            <td id="tabledepth">-</td>
+                            <td>mm</td>
+                        </tr>
+                        <tr>
+                            <td>Spacing</td>
+                            <td id="tablespacing">-</td>
+                            <td>mm</td>
+                        </tr>
+                        <tr>
+                            <td>Total Area of Steel</td>
+                            <td id="tablearearequired">-</td>
+                            <td>mm2</td>
+                        </tr>
+                        <tr>
+                            <td>Total length</td>
+                            <td id="tabletotallength">-</td>
+                            <td>mm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="visualization.js"></script>
+    <script src="Script.js"></script> 
+</body>
+</html>
